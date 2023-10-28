@@ -3,22 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "description": "motor-spirit-costumes",
-  "author": "Alexander",
-  "keywords": [
-    "gatsby"
-  ],
+  "author": "Axe <alxndr+kglw-msc@gmail.com>",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
     "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "start": "gatsby develop",
+    "test": "echo no test suite yet && exit 1"
   },
   "dependencies": {
-    "gatsby": "^5.12.4",
-    "gatsby-plugin-sass": "^6.12.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.69.5"
+    "gatsby": "5.12.9",
+    "gatsby-plugin-sass": "6.12.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "1.69.5"
   }
 }
