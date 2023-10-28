@@ -1,0 +1,24 @@
+{
+  "name": "motor-spirit-costumes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "motor-spirit-costumes",
+  "author": "Alexander",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.12.4",
+    "gatsby-plugin-sass": "^6.12.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.69.5"
+  }
+}
