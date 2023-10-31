@@ -6,7 +6,7 @@ main {
 
 h1 {
   max-width: 15em;
-  font-family: Agbalumo, fantasy;
+  font-family: fantasy;
 }
 
 #form { // yeah I know
@@ -19,6 +19,5 @@ h1 {
 }
 
 canvas {
-  background: pink;
   max-width: min(100%, 20rem);
 }
