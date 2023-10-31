@@ -99,10 +99,11 @@ function fileOnChange({target: uploadTarget}) {
       if (readerTarget.readyState == FileReader.DONE) {
         uploadedImage = new Image();
         uploadedImage.src = readerTarget.result;
-        _('button').innerText = 'okay meme it'
+        _('button').classList = ['ready'];
+        _('button').innerText = 'okay meme it';
       }
     }
-  } else alert('got to be an image!')
+  } else alert('got to be an image!');
 }
 
 const IndexPage = () => {
@@ -140,11 +141,12 @@ const IndexPage = () => {
             </label>
           </li>
         </ul>
-        <label>Pick a photo...
+        <label>Pick a photo for the costume...
           <input type="file" id="image" onChange={fileOnChange} />
         </label>
         <button id="button" onClick={click}>Add image first</button>
       </div>
+      <h6>brought to you by <a href="https://www.instagram.com/p/CzEZKcDvEn2" target="_blank">@billabongvalleybootleg</a> and <a href="https://kglw.net/?src=costume-generator&campaign=footerlink" target="_blank">KGLW.net</a>!</h6>
     </main>
   )
 }
