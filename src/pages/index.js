@@ -20,14 +20,25 @@ function val(domId) {
   return _(domId).value.trim();
 }
 
-function click() {
+function newImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+async function click() {
   let costumeName = val('costumeName');
   const canvas = _('canvas');
   canvas.width = cWidth;
   canvas.height = cHeight;
   const ctx = canvas.getContext('2d');
-  const templateImage = new Image();
-  templateImage.src = costumeTemplateSrc;
+  // const templateImage = new Image();
+  // templateImage.src = costumeTemplateSrc;
+  // await templateImage.onload();
+  const templateImage = await newImage(costumeTemplateSrc);
   ctx.drawImage(templateImage, 0, 0, cWidth, cHeight);
   ctx.fillStyle = 'white';
   ctx.strokeStyle = 'black';
