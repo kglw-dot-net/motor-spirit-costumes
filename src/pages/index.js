@@ -42,26 +42,26 @@ async function click() {
   drawMultilineText(ctx, costumeName, {
     rect: {
       x: 290, // ...center of the top of the rectangle
-      y: 400,
+      y: 375,
       width: 350,
       height: 300
     },
     font: 'Arial',
-    lineHeight: 1.1,
-    minFontSize: 50,
-    maxFontSize: 256,
+    lineHeight: 1,
+    minFontSize: 64,
+    maxFontSize: 512,
   });
   drawMultilineText(ctx, costumeName, {
     rect: {
       x: 290, // ...center of the top of the rectangle
-      y: 400,
+      y: 375,
       width: 350,
       height: 300
     },
     font: 'Arial',
-    lineHeight: 1.1,
-    minFontSize: 50,
-    maxFontSize: 256,
+    lineHeight: 1,
+    minFontSize: 64,
+    maxFontSize: 512,
     stroke: true,
   })
   ctx.textAlign = 'left';
