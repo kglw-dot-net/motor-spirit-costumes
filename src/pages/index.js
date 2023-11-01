@@ -1,8 +1,7 @@
 import * as React from 'react'
-// import {reactive} from 'https://esm.sh/@arrow-js/core';
+import drawMultilineText from 'canvas-multiline-text'
 
 import costumeTemplateSrc from '../images/motor-spirit-costume-template.jpg'
-import costumeLogoSrc from '../images/motor-spirit-costume-logo.png'
 
 import './index.scss'
 
@@ -35,27 +34,43 @@ async function click() {
   canvas.width = cWidth;
   canvas.height = cHeight;
   const ctx = canvas.getContext('2d');
-  // const templateImage = new Image();
-  // templateImage.src = costumeTemplateSrc;
-  // await templateImage.onload();
   const templateImage = await newImage(costumeTemplateSrc);
   ctx.drawImage(templateImage, 0, 0, cWidth, cHeight);
   ctx.fillStyle = 'white';
   ctx.strokeStyle = 'black';
   ctx.textAlign = 'center';
-  ctx.font = `${cHeight/20}px Arial`;
-  // if (ctx.measureText(costumeName).width > cWidth/2) {
-  //   costumeName = costumeName.replace(' ', '\n')
-  // } // TODO way to linebreak?
-  ctx.fillText(costumeName, 290, 440);
-  ctx.strokeText(costumeName, 290, 440);
+  drawMultilineText(ctx, costumeName, {
+    rect: {
+      x: 290, // ...center of the top of the rectangle
+      y: 400,
+      width: 350,
+      height: 300
+    },
+    font: 'Arial',
+    lineHeight: 1.1,
+    minFontSize: 50,
+    maxFontSize: 256,
+  });
+  drawMultilineText(ctx, costumeName, {
+    rect: {
+      x: 290, // ...center of the top of the rectangle
+      y: 400,
+      width: 350,
+      height: 300
+    },
+    font: 'Arial',
+    lineHeight: 1.1,
+    minFontSize: 50,
+    maxFontSize: 256,
+    stroke: true,
+  })
   ctx.textAlign = 'left';
-  ctx.font = `${cHeight/30}px Arial`;
-  ctx.fillText('Includes:', 150, 650);
-  if (val('component1')) ctx.fillText(`– ${val('component1')}`, 150, 700);
-  if (val('component2')) ctx.fillText(`– ${val('component2')}`, 150, 750);
-  if (val('component3')) ctx.fillText(`– ${val('component3')}`, 150, 800);
-  if (val('component4')) ctx.fillText(`– ${val('component4')}`, 150, 850);
+  ctx.font = `${Math.floor(cHeight/35)}px Arial`;
+  ctx.fillText('Includes:', 110, 750);
+  if (val('component1')) ctx.fillText(`– ${val('component1')}`, 110, 800);
+  if (val('component2')) ctx.fillText(`– ${val('component2')}`, 110, 850);
+  if (val('component3')) ctx.fillText(`– ${val('component3')}`, 110, 900);
+  if (val('component4')) ctx.fillText(`– ${val('component4')}`, 110, 950);
   const maskPoints = {
     NW: [685, 175],        NE: [905, 180],
     Wmidpoint: [325, 650], Wradius: 700,
@@ -71,23 +86,17 @@ async function click() {
   ctx.arcTo(...maskPoints.Wmidpoint, ...maskPoints.NW, maskPoints.Wradius);
   ctx.closePath();
   ctx.clip();
-  // global.console.log({maskWidth, maskHeight}, ' ... uploadedImage w h:', uploadedImage.width, 'x', uploadedImage.height)
   const multiplier = maskHeight / uploadedImage.height;
   const newImageWidth = Math.floor(uploadedImage.width * multiplier);
   const newImageHeight = maskHeight;
   uploadedImage.width = newImageWidth;
   uploadedImage.height = newImageHeight;
-  // global.console.log('new...', uploadedImage.width, uploadedImage.height);
   ctx.drawImage(uploadedImage,
-    // sx, sy, sWidth, sHeight,
     maskPoints.Wmidpoint[0] - (uploadedImage.width / 2) + (maskWidth / 2),
-    maskPoints.NW[1], // ... NW[1] - (uploadedImage.height/2) + (maskHeight/2)
+    maskPoints.NW[1],
     newImageWidth,
     newImageHeight
   );
-  // 425, 175 ... mask spans from x=425 to x=930... midpoint 677.5...
-  // global.console.log( maskPoints.Wmidpoint[0] - (uploadedImage.width / 2) + (maskWidth / 2), maskPoints.NW[1]) // ... NW[1] - (uploadedImage.height/2) + (maskHeight/2)
-
 }
 
 function fileOnChange({target: uploadTarget}) {
@@ -110,7 +119,6 @@ const IndexPage = () => {
   return (
     <main>
       <h1>
-        <img src={costumeLogoSrc} style={{height:'3em',verticalAlign:'middle'}} alt="'Motor Spirit Costumes' logo (parody of Spirit Halloween's logo) by @billabongvalley@Instagram" />
         Gizz Costume Generator
       </h1>
       <canvas id="canvas"/>
