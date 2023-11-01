@@ -66,15 +66,15 @@ async function click() {
   })
   ctx.textAlign = 'left';
   ctx.font = `${Math.floor(cHeight/35)}px Arial`;
-  ctx.fillText('Includes:', 110, 750);
-  if (val('component1')) ctx.fillText(`– ${val('component1')}`, 110, 800);
-  if (val('component2')) ctx.fillText(`– ${val('component2')}`, 110, 850);
-  if (val('component3')) ctx.fillText(`– ${val('component3')}`, 110, 900);
-  if (val('component4')) ctx.fillText(`– ${val('component4')}`, 110, 950);
+  ctx.fillText('Includes:', 130, 750);
+  if (val('component1')) ctx.fillText(`– ${val('component1')}`, 130, 800);
+  if (val('component2')) ctx.fillText(`– ${val('component2')}`, 130, 850);
+  if (val('component3')) ctx.fillText(`– ${val('component3')}`, 130, 900);
+  if (val('component4')) ctx.fillText(`– ${val('component4')}`, 130, 950);
   const maskPoints = {
     NW: [685, 175],        NE: [905, 180],
-    Wmidpoint: [325, 650], Wradius: 700,
-    SW: [680, 1150],       SE: [930, 1160],
+    Wmidpoint: [350, 700], Wradius: 700,
+    SW: [680, 1165],       SE: [930, 1160],
   }
   const maskWidth = Math.max(maskPoints.NE[0], maskPoints.SE[0]) - maskPoints.Wmidpoint[0]; // 505
   const maskHeight = Math.max(maskPoints.SE[1], maskPoints.SW[1]) - Math.min(maskPoints.NE[1], maskPoints.NW[1]);
